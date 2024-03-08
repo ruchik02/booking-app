@@ -8,7 +8,21 @@ import {
   faPlane,
   faTaxi,
 } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import { Calendar } from "react-date-range";
+import "react-date-range/dist/styles.css"; // main style file
+import "react-date-range/dist/theme/default.css"; // theme css file
 const Header = () => {
+  const [selectionRange, setSelectionRange] = useState({
+    startDate: new Date(),
+    endDate: new Date(),
+    key: "selection",
+  });
+
+  const handleSelect = (ranges) => {
+    setSelectionRange(ranges.selection);
+  };
+
   return (
     <div className="header">
       <div className="headerContainer">
@@ -47,25 +61,37 @@ const Header = () => {
         </p>
         <button className="headerBtn">Sign in / Register </button>
         <div className="headerSearch">
-            {/* 1 */}
-            <div className="headerSearchItem">
+          {/* 1 */}
+          <div className="headerSearchItem">
             <FontAwesomeIcon icon={faBed} className="headerIcon" />
-            <input type="text" placeholder="Where are you going?" className="headerSearchInput" />
-            </div>
-            {/* 2 */}
-            <div className="headerSearchItem">
+            <input
+              type="text"
+              placeholder="Where are you going?"
+              className="headerSearchInput"
+            />
+          </div>
+          {/* 2 */}
+          <div className="headerSearchItem">
             <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
             <span className="headerSearchText">date to date</span>
-            </div>
-            {/* 3 */}
-            <div className="headerSearchItem">
+            <Calendar
+              editableDateInputs={true}
+              ranges={[selectionRange]}
+              onChange={handleSelect}
+              className="date"
+            />
+          </div>
+          {/* 3 */}
+          <div className="headerSearchItem">
             <FontAwesomeIcon icon={faPerson} className="headerIcon" />
-            <span className="headerSearchText">2 adults 2 children 1 room </span>
-            </div>
-            {/* 4 */}
-            <div className="headerSearchItem">
+            <span className="headerSearchText">
+              2 adults 2 children 1 room{" "}
+            </span>
+          </div>
+          {/* 4 */}
+          <div className="headerSearchItem">
             <button className="headerBtn">Search</button>
-            </div>
+          </div>
         </div>
       </div>
     </div>
