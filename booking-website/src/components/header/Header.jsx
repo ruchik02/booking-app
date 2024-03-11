@@ -15,6 +15,12 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 const Header = () => {
   const [openDate, setOpenDate] = useState(false);
+  const[openOptions, setOpenOptions] = useState(false);
+  const [options,setOptions] = useState({
+    adult: 1,
+    children: 0,
+    room: 1,
+  }); 
   const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -97,8 +103,9 @@ const Header = () => {
           <div className="headerSearchItem">
             <FontAwesomeIcon icon={faPerson} className="headerIcon" />
             <span className="headerSearchText">
-              2 adults 2 children 1 room{" "}
+             {`${options.adult} adult . ${options.children} children . ${options.room} room`}
             </span>
+            <div className="options"></div>
           </div>
           {/* 4 */}
           <div className="headerSearchItem">
