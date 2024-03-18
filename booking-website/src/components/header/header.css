@@ -97,3 +97,6 @@
   cursor: pointer;
   background-color: white;
 }
+.optionCounterButton:disabled {
+    cursor: not-allowed;
+}
