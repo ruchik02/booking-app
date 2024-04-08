@@ -13,10 +13,16 @@ import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
-const Header = ({ type }) => {
+import React from "react";
+const Header = ({ type }: { type: string }) => {
   const [openDate, setOpenDate] = useState(false);
   const [openOptions, setOpenOptions] = useState(false);
-  const [options, setOptions] = useState({
+  const [options, setOptions] = useState<{
+    adult: number;
+    children: number;
+    room: number;
+    [key: string]: number; // Index signature
+  }>({
     adult: 1,
     children: 0,
     room: 1,
@@ -28,7 +34,7 @@ const Header = ({ type }) => {
       key: "selection",
     },
   ]);
-  const handleOption = (name, operation) => {
+  const handleOption = (name: string, operation: string) => {
     setOptions((prev) => {
       return {
         ...prev,
@@ -72,9 +78,9 @@ const Header = ({ type }) => {
           {/* 6 */}
         </div>
         {type !== "list" && (
-          <>
+          <React.Fragment>
             <h1 className="headerTitle">
-              A lifetime of discounts? It's Genius.
+              A lifetime of discounts? It&apos;s Genius.
             </h1>
             <p className="headerDesc">
               Get rewarded for your travels - unlock instant savings of 10% or
@@ -101,13 +107,23 @@ const Header = ({ type }) => {
                   {" "}
                   {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
                     date[0].endDate,
-                    "MM/dd/yyyy"
+                    "MM/dd/yyyy",
                   )}`}
                 </span>
                 {openDate && (
                   <DateRange
                     editableDateInputs={true}
-                    onChange={(item) => setDate([item.selection])}
+                    onChange={(item) => {
+                      if (item.selection) {
+                        setDate([
+                          {
+                            startDate: item.selection.startDate || new Date(), // Default to new Date() if undefined
+                            endDate: item.selection.endDate || new Date(), // Default to new Date() if undefined
+                            key: "selection",
+                          },
+                        ]);
+                      }
+                    }}
                     moveRangeOnFirstSelection={false}
                     ranges={date}
                     className="date"
@@ -197,7 +213,7 @@ const Header = ({ type }) => {
                 <button className="headerBtn">Search</button>
               </div>
             </div>
-          </>
+          </React.Fragment>
         )}
       </div>
     </div>
