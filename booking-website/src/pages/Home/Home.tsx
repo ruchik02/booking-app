@@ -5,6 +5,7 @@ import PropertyList from "../../components/propertyList/propertyList";
 import React from "react";
 import "./home.css";
 import FeaturedProperty from "../../components/featuredProperty/FeaturedProperty";
+import MailList from "../../components/mailList/mailList";
 const Home = () => {
   return (
     <React.Fragment>
@@ -16,6 +17,7 @@ const Home = () => {
         <PropertyList />
         <h1 className="homeTitle">Homes guests love</h1>
         <FeaturedProperty/>
+        <MailList/>
       </div>
     </React.Fragment>
   );
