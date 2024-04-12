@@ -6,6 +6,7 @@ import React from "react";
 import "./home.css";
 import FeaturedProperty from "../../components/featuredProperty/FeaturedProperty";
 import MailList from "../../components/mailList/MailList";
+import Footer from "../../components/footer/Footer";
 const Home = () => {
   return (
     <React.Fragment>
@@ -18,6 +19,7 @@ const Home = () => {
         <h1 className="homeTitle">Homes guests love</h1>
         <FeaturedProperty />
         <MailList />
+        <Footer />
       </div>
     </React.Fragment>
   );
