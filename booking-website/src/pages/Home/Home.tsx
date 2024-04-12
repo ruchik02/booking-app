@@ -5,7 +5,7 @@ import PropertyList from "../../components/propertyList/propertyList";
 import React from "react";
 import "./home.css";
 import FeaturedProperty from "../../components/featuredProperty/FeaturedProperty";
-import MailList from "../../components/mailList/MailList";
+// import MailList from "../../components/mailList/MailList";
 import Footer from "../../components/footer/Footer";
 const Home = () => {
   return (
@@ -18,7 +18,7 @@ const Home = () => {
         <PropertyList />
         <h1 className="homeTitle">Homes guests love</h1>
         <FeaturedProperty />
-        <MailList />
+        {/* <MailList /> */}
         <Footer />
       </div>
     </React.Fragment>
