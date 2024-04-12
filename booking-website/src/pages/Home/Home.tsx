@@ -16,8 +16,8 @@ const Home = () => {
         <h1 className="homeTitle">Browser by property type</h1>
         <PropertyList />
         <h1 className="homeTitle">Homes guests love</h1>
-        <FeaturedProperty/>
-        <MailList/>
+        <FeaturedProperty />
+        <MailList />
       </div>
     </React.Fragment>
   );

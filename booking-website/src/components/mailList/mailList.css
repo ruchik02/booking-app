@@ -9,10 +9,9 @@
   padding: 50px;
   gap: 14px;
 }
-.mailTitle{
-    font-size: 18px;
-    font-weight: bold;
-   
+.mailTitle {
+  font-size: 18px;
+  font-weight: bold;
 }
 .mailInputContainer > input {
   width: 300px;

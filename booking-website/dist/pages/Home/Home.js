@@ -13,12 +13,16 @@ var propertyList_1 = __importDefault(
 );
 var react_1 = __importDefault(require("react"));
 require("./home.css");
+var FeaturedProperty_1 = __importDefault(
+  require("../../components/featuredProperty/FeaturedProperty"),
+);
+var mailList_1 = __importDefault(require("../../components/mailList/mailList"));
 var Home = function () {
   return react_1.default.createElement(
     react_1.default.Fragment,
     null,
     react_1.default.createElement(Navbar_1.default, null),
-    react_1.default.createElement(Header_1.default, { type: "list" }),
+    react_1.default.createElement(Header_1.default, { type: "" }),
     react_1.default.createElement(
       "div",
       { className: "homeContainer" },
@@ -34,6 +38,8 @@ var Home = function () {
         { className: "homeTitle" },
         "Homes guests love",
       ),
+      react_1.default.createElement(FeaturedProperty_1.default, null),
+      react_1.default.createElement(mailList_1.default, null),
     ),
   );
 };

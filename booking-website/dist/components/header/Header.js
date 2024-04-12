@@ -31,20 +31,20 @@ var date_fns_1 = require("date-fns");
 var react_2 = __importDefault(require("react"));
 var Header = function (_a) {
   var type = _a.type;
-  var _b = (0, react_1.useState)(false),
+  var _b = react_1.useState(false),
     openDate = _b[0],
     setOpenDate = _b[1];
-  var _c = (0, react_1.useState)(false),
+  var _c = react_1.useState(false),
     openOptions = _c[0],
     setOpenOptions = _c[1];
-  var _d = (0, react_1.useState)({
+  var _d = react_1.useState({
       adult: 1,
       children: 0,
       room: 1,
     }),
     options = _d[0],
     setOptions = _d[1];
-  var _e = (0, react_1.useState)([
+  var _e = react_1.useState([
       {
         startDate: new Date(),
         endDate: new Date(),
@@ -57,7 +57,8 @@ var Header = function (_a) {
     setOptions(function (prev) {
       var _a;
       return __assign(
-        __assign({}, prev),
+        {},
+        prev,
         ((_a = {}),
         (_a[name] = operation === "i" ? options[name] + 1 : options[name] - 1),
         _a),
@@ -171,14 +172,9 @@ var Header = function (_a) {
                   className: "headerSearchText",
                 },
                 " ",
-                ""
-                  .concat(
-                    (0, date_fns_1.format)(date[0].startDate, "MM/dd/yyyy"),
-                    " to ",
-                  )
-                  .concat(
-                    (0, date_fns_1.format)(date[0].endDate, "MM/dd/yyyy"),
-                  ),
+                date_fns_1.format(date[0].startDate, "MM/dd/yyyy") +
+                  " to " +
+                  date_fns_1.format(date[0].endDate, "MM/dd/yyyy"),
               ),
               openDate &&
                 react_2.default.createElement(react_date_range_1.DateRange, {
@@ -187,8 +183,8 @@ var Header = function (_a) {
                     if (item.selection) {
                       setDate([
                         {
-                          startDate: item.selection.startDate || new Date(), // Default to new Date() if undefined
-                          endDate: item.selection.endDate || new Date(), // Default to new Date() if undefined
+                          startDate: item.selection.startDate || new Date(),
+                          endDate: item.selection.endDate || new Date(),
                           key: "selection",
                         },
                       ]);
@@ -218,10 +214,12 @@ var Header = function (_a) {
                     return setOpenOptions(!openOptions);
                   },
                 },
-                ""
-                  .concat(options.adult, " adult . ")
-                  .concat(options.children, " children . ")
-                  .concat(options.room, " room"),
+                options.adult +
+                  " adult . " +
+                  options.children +
+                  " children . " +
+                  options.room +
+                  " room",
               ),
               openOptions &&
                 react_2.default.createElement(
