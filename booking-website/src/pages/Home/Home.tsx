@@ -4,6 +4,7 @@ import Navbar from "../../components/navbar/Navbar";
 import PropertyList from "../../components/propertyList/propertyList";
 import React from "react";
 import "./home.css";
+import FeaturedProperty from "../../components/featuredProperty/FeaturedProperty";
 const Home = () => {
   return (
     <React.Fragment>
@@ -14,6 +15,7 @@ const Home = () => {
         <h1 className="homeTitle">Browser by property type</h1>
         <PropertyList />
         <h1 className="homeTitle">Homes guests love</h1>
+        <FeaturedProperty/>
       </div>
     </React.Fragment>
   );
